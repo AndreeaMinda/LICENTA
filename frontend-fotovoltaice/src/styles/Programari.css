@@ -1,0 +1,35 @@
+.programari-container {
+  padding: 1rem;
+}
+
+.calendar-wrapper {
+  margin-bottom: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+table {
+  width: 100%;
+  background-color: white;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.status-finalizata {
+  background-color: #d1f7c4;
+}
+
+.status-in-curs {
+  background-color: #ffe5b4;
+}
+
+.status-programata {
+  background-color: #f0f0f0;
+}

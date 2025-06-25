@@ -1,0 +1,11 @@
+# Foldere node_modules (nu se urca niciodata)
+node_modules/
+api-fotovoltaice/node_modules/
+frontend-fotovoltaice/node_modules/
+
+# Fișiere de configurare locale
+.env
+
+# Fisiere temporare sau generate
+.DS_Store
+*.log
