@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gazdă: 127.0.0.1:3306
--- Timp de generare: iun. 25, 2025 la 09:12 PM
+-- Timp de generare: iun. 26, 2025 la 04:08 PM
 -- Versiune server: 9.1.0
 -- Versiune PHP: 8.3.14
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `judet` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `localitate` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Eliminarea datelor din tabel `clients`
@@ -46,6 +46,7 @@ CREATE TABLE IF NOT EXISTS `clients` (
 INSERT INTO `clients` (`id`, `name`, `email`, `phone`, `type`, `judet`, `localitate`) VALUES
 (1, 'Popescu Ion', 'ion@example.com', '0712345678', 'fizica', 'Timis', 'Timisoara'),
 (2, 'Minda ANdreea', 'andrea_minda@yahoo.com', '0767323274', 'fizica', 'Timis', 'Timisoara'),
+(13, 'Ferenczi Cristi', 'c.ferenczi@solanum.ro', '0766474844', 'fizica', 'Timis', 'Timisoara'),
 (4, 'SC EcoSun SRL', 'contact@ecosun.ro', '0356456789', 'juridica', 'Arad', 'Arad'),
 (5, 'Ionescu Maria', 'maria.ionescu@yahoo.com', '0744556677', 'fizica', 'Cluj', 'Cluj-Napoca'),
 (6, 'GreenVolt Solutions SRL', 'office@greenvolt.ro', '0213456789', 'juridica', 'Ilfov', 'Buftea'),
@@ -68,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `devize` (
   `project_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `project_id` (`project_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Eliminarea datelor din tabel `devize`
@@ -82,7 +83,8 @@ INSERT INTO `devize` (`id`, `project_id`) VALUES
 (5, 5),
 (6, 6),
 (7, 7),
-(8, 8);
+(8, 8),
+(9, 9);
 
 -- --------------------------------------------------------
 
@@ -100,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `deviz_items` (
   PRIMARY KEY (`id`),
   KEY `project_id` (`project_id`),
   KEY `material_id` (`material_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Eliminarea datelor din tabel `deviz_items`
@@ -136,7 +138,12 @@ INSERT INTO `deviz_items` (`id`, `project_id`, `material_id`, `quantity`, `unit_
 (27, 7, 56, 300, 7.90),
 (36, 8, 62, 1, 3950.00),
 (37, 8, 85, 1, 639.49),
-(38, 8, 71, 1, 3100.00);
+(38, 8, 71, 1, 3100.00),
+(48, 9, 55, 150, 7.90),
+(47, 9, 84, 2, 1202.95),
+(46, 9, 77, 5, 4900.00),
+(45, 9, 48, 250, 1175.00),
+(44, 9, 63, 100, 4850.00);
 
 -- --------------------------------------------------------
 
@@ -233,7 +240,7 @@ CREATE TABLE IF NOT EXISTS `offers` (
   `project_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `deviz_id` (`deviz_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Eliminarea datelor din tabel `offers`
@@ -247,7 +254,8 @@ INSERT INTO `offers` (`id`, `deviz_id`, `status`, `nr_oferta`, `data`, `obiectiv
 (5, 5, 'acceptata', 'OF-5', '2025-06-22', 'Sistem fotovoltaic complet', 'Structura pe acoperis tip terasa', 'Minda Andreea', 0, NULL, 5),
 (6, 6, 'in_curs', 'OF-6', '2025-06-22', 'Sistem fotovoltaic complet', 'Structura la sol - SUD', 'Minda Andreea', 0, NULL, 6),
 (7, 7, 'finalizata', 'OF-7', '2025-06-22', 'Sistem fotovoltaic complet', 'Structura pe acoperis de tabla', 'Mindsa Andreea', 0, NULL, 7),
-(8, 8, 'acceptata', 'OF-9', '2025-06-24', 'Sistem fotovoltaic complet', '', 'Minda ANdreea', 0, 8691.54, 8);
+(8, 8, 'acceptata', 'OF-9', '2025-06-24', 'Sistem fotovoltaic complet', '', 'Minda ANdreea', 0, 8691.54, 8),
+(9, 9, 'finalizata', 'OF-11', '2025-06-26', 'Sistem fotovoltaic complet 100 kw ', 'Structura la sol - sud', 'Minda Andreea', 0, 411571.58, 9);
 
 -- --------------------------------------------------------
 
@@ -265,13 +273,17 @@ CREATE TABLE IF NOT EXISTS `programari` (
   `durata_zile` int DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `project_id` (`project_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Eliminarea datelor din tabel `programari`
 --
 
 INSERT INTO `programari` (`id`, `project_id`, `data_programare`, `status`, `observatii`, `durata_zile`) VALUES
+(116, 9, '2025-07-11', 'finalizata', NULL, 4),
+(115, 9, '2025-07-10', 'finalizata', NULL, 4),
+(114, 9, '2025-07-08', 'finalizata', NULL, 4),
+(113, 9, '2025-07-07', 'finalizata', NULL, 4),
 (112, 8, '2025-07-03', 'programata', NULL, 2),
 (111, 8, '2025-07-02', 'programata', NULL, 2),
 (110, 4, '2025-07-01', 'programata', NULL, 1),
@@ -300,7 +312,7 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `tva_rate` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `client_id` (`client_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Eliminarea datelor din tabel `projects`
@@ -314,7 +326,8 @@ INSERT INTO `projects` (`id`, `client_id`, `name`, `start_date`, `status`, `tota
 (5, 11, 'Instalare 15 kw Sungrow', '2025-06-22', 'nou', 68366.52, 9272.99, 77639.51, '9%'),
 (6, 8, 'Instalare 100 kw Deye', '2025-06-22', 'nou', 216140.00, 41066.60, 257206.60, '9%'),
 (7, 10, 'Instalare 25 kw Growatt', '2025-06-22', 'nou', 67973.50, 12914.97, 80888.47, '9%'),
-(8, 7, 'Isyds', '2025-06-24', 'nou', 7689.49, 1002.05, 8691.54, '9%');
+(8, 7, 'Isyds', '2025-06-24', 'nou', 7689.49, 1002.05, 8691.54, '9%'),
+(9, 13, 'Instalare 100 kw Deye cu baterii', '2025-06-26', 'nou', 806840.90, 75065.68, 881906.58, '9%');
 
 -- --------------------------------------------------------
 
@@ -339,7 +352,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `role`, `reset_token`, `reset_expires`) VALUES
-(1, 'voltplan.adm@gmail.com', '$2b$10$3d3x7RiTKSeOhLH3UJaQiuyWWvFj5OWCnbRImP.jTnlwESEBe3Veq', 'admin', NULL, NULL),
+(1, 'voltplan.adm@gmail.com', '$2b$10$3d3x7RiTKSeOhLH3UJaQiuyWWvFj5OWCnbRImP.jTnlwESEBe3Veq', 'admin', '4ea35ae39929b5f3a0dd611a7c25ba270a342d0dfdae4e8e46141da3e6cd0854', '2025-06-26 02:22:23'),
 (2, 'ofertant@example.com', '$2b$10$4j5yjyyQmvzCrFzoS6i16uBbPrGuh7E0F4QILQFIm3vAEGgR.sl3O', 'ofertant', NULL, NULL),
 (3, 'user@example.com', '$2b$10$gY7BLvuFYjSQgyjrXdmNnuGxJ1ed3rWjXI1d.nfudKwKSUUJf3Sga', 'utilizator', NULL, NULL),
 (4, 'test@voltplan.ro', '$2b$10$YB60RALzv5z7j4.01FtT2O9UHTMOFy7JZp..WDMPRJdlRhAWP9EN2', 'admin', NULL, NULL);
